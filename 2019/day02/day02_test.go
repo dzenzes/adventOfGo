@@ -18,7 +18,7 @@ func TestIntComputer(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(strings.Trim(strings.Join(strings.Fields(fmt.Sprint(test.program)), ", "), "[]"), func(t *testing.T) {
-			got := IntComputer(test.program, Configuration{})
+			got := IntComputer(test.program)
 			want := test.result
 			if !reflect.DeepEqual(got, want) {
 				t.Errorf("intcomputer: got %v want %v", got, want)
