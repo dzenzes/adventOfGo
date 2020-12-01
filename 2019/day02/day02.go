@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/dmies/adventOfGo/2019/filehandler"
 	"github.com/dmies/adventOfGo/2019/intcomputer"
+	"github.com/dmies/adventOfGo/filehandler"
 )
 
 func part1(program []int) int {
