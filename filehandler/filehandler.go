@@ -36,8 +36,19 @@ func ToNumberList(handle io.Reader) ([]int, error) {
 	return program, nil
 }
 
-// ImportNumberPerLineList takes a reader and transform the results of it to a []int
-func ImportNumberPerLineList(handle io.Reader) ([]int, error) {
+// ImportNumberPerLineList opens the given file and parses its contents (one numper per line) to an int array
+func ImportNumberPerLineList(file string) ([]int, error) {
+	handle, err := os.Open(file)
+
+	if err != nil {
+		return nil, err
+	}
+	defer handle.Close()
+	return ToNumberPerLineList(handle)
+}
+
+// ToNumberPerLineList takes a reader and transform the results of it to a []int
+func ToNumberPerLineList(handle io.Reader) ([]int, error) {
 	program := make([]int, 0)
 	scanner := bufio.NewScanner(handle)
 	for scanner.Scan() {

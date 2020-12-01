@@ -23,10 +23,10 @@ func Test_ImportNumberList(t *testing.T) {
 	})
 }
 
-func Test_ImportNumberPerLineList(t *testing.T) {
+func Test_ToNumberPerLineList(t *testing.T) {
 	t.Run("Test something", func(t *testing.T) {
 		want := []int{1, 2, 3}
-		got, err := filehandler.ImportNumberPerLineList(strings.NewReader("1\n2\n3"))
+		got, err := filehandler.ToNumberPerLineList(strings.NewReader("1\n2\n3"))
 
 		if err != nil {
 			t.Errorf("ImportNumberPerLineList() error = %v", err)
