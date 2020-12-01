@@ -62,6 +62,7 @@ func (computer IntComputer) getValue(position int, modes []int) int {
 	} else {
 		log.Fatal("Unsupported mode")
 	}
+	return -1
 
 }
 

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/dmies/adventOfGo/2019/intcomputer"
 	"github.com/dmies/adventOfGo/filehandler"
@@ -37,8 +38,10 @@ func part2(program []int) int {
 }
 
 func main() {
-	program := filehandler.ImportNumberList("./input.txt")
-
+	program, err := filehandler.ImportNumberList("./input.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
 	fmt.Printf("Part1: %d \n", part1(program))
 	fmt.Printf("Part2: %d \n", part2(program))
 
