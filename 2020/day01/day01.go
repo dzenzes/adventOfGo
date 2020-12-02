@@ -69,6 +69,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("day 02, part1 %v\n", solution2)
+	fmt.Printf("day 01, part2 %v\n", solution2)
 
 }
