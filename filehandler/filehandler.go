@@ -36,7 +36,7 @@ func ToNumberList(handle io.Reader) ([]int, error) {
 	return program, nil
 }
 
-// ImportNumberPerLineList opens the given file and parses its contents (one numper per line) to an int array
+// ImportNumberPerLineList opens the given file and parses its contents (one number per line) to an int array
 func ImportNumberPerLineList(file string) ([]int, error) {
 	handle, err := os.Open(file)
 
@@ -59,6 +59,28 @@ func ToNumberPerLineList(handle io.Reader) ([]int, error) {
 		}
 		program = append(program, number)
 
+	}
+	return program, nil
+}
+
+// ImportSringList opens the given file and parses its contents (one String per line) to an String array
+func ImportSringList(file string) ([]string, error) {
+	handle, err := os.Open(file)
+
+	if err != nil {
+		return nil, err
+	}
+	defer handle.Close()
+	return ToSringList(handle)
+}
+
+// ToSringList takes a reader and transform the results of it to a []string
+func ToSringList(handle io.Reader) ([]string, error) {
+	program := make([]string, 0)
+	scanner := bufio.NewScanner(handle)
+	for scanner.Scan() {
+		text := scanner.Text()
+		program = append(program, text)
 	}
 	return program, nil
 }
