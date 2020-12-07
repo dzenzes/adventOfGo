@@ -3,10 +3,11 @@ package main
 import (
 	"errors"
 	"fmt"
-	"github.com/dmies/adventOfGo/filehandler"
 	"log"
 	"math"
 	"sort"
+
+	"github.com/dmies/adventOfGo/filehandler"
 )
 
 // CalculateRange takes the current min and max and calculates the new ones by the given letter
@@ -52,7 +53,8 @@ func GetSeat(boardingPass string) (int, error) {
 	return min, nil
 }
 
-func GetSeatId(boardingPass string) (int, error) {
+// GetSeatID takes a boarding pass and calculates the seat id for this pass
+func GetSeatID(boardingPass string) (int, error) {
 	row, err := GetRow(boardingPass)
 	if err != nil {
 		return -1, err
@@ -64,25 +66,26 @@ func GetSeatId(boardingPass string) (int, error) {
 	return row*8 + seat, nil
 }
 
-// GetHighestSeatId finds the biggest seatId in the given list of boarding passes
-func GetHighestSeatId(boardingPasses []string) (int, error) {
-	seatId := -1
+// GetHighestSeatID finds the biggest seatID in the given list of boarding passes
+func GetHighestSeatID(boardingPasses []string) (int, error) {
+	seatID := -1
 	for _, boardingPass := range boardingPasses {
-		id, err := GetSeatId(boardingPass)
+		id, err := GetSeatID(boardingPass)
 		if err != nil {
 			return -1, err
 		}
-		if id > seatId {
-			seatId = id
+		if id > seatID {
+			seatID = id
 		}
 	}
-	return seatId, nil
+	return seatID, nil
 }
 
-func GetSortedSeatIds(boardingPasses []string) ([]int, error) {
+// GetSortedSeatIDs calculates all seat IDs and sorts them
+func GetSortedSeatIDs(boardingPasses []string) ([]int, error) {
 	result := make([]int, 0)
 	for _, boardingPass := range boardingPasses {
-		id, err := GetSeatId(boardingPass)
+		id, err := GetSeatID(boardingPass)
 		if err != nil {
 			return []int{}, err
 		}
@@ -92,24 +95,26 @@ func GetSortedSeatIds(boardingPasses []string) ([]int, error) {
 	return result, nil
 }
 
-func GetMissingIds(ids []int) ([]int, error) {
+// GetMissingIDs checks the given sorted list of IDs and finds the missing ones
+func GetMissingIDs(ids []int) ([]int, error) {
 	missing := make([]int, 0)
-	lastId := ids[0]
+	lastID := ids[0]
 	for _, id := range ids[1:] {
-		if lastId+1 != id {
-			missing = append(missing, lastId+1)
+		if lastID+1 != id {
+			missing = append(missing, lastID+1)
 		}
-		lastId = id
+		lastID = id
 	}
 	return missing, nil
 }
 
+// FindMySeat checks all boarding passes and finds the free seats
 func FindMySeat(boardingPasses []string) ([]int, error) {
-	ids, err := GetSortedSeatIds(boardingPasses)
+	ids, err := GetSortedSeatIDs(boardingPasses)
 	if err != nil {
 		return []int{}, err
 	}
-	return GetMissingIds(ids)
+	return GetMissingIDs(ids)
 }
 
 func main() {
@@ -118,7 +123,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	solution1, err := GetHighestSeatId(boardingPasses)
+	solution1, err := GetHighestSeatID(boardingPasses)
 	if err != nil {
 		log.Fatal(err)
 	}

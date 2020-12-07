@@ -12,9 +12,9 @@ func Test_CalculateRange_only_supports_F_and_B(t *testing.T) {
 		letter        string
 		errorExpected bool
 	}{
-		{"valid case", "F", false},
-		{"valid case", "B", false},
-		{"invalid case", "X", true},
+		{"valiD case", "F", false},
+		{"valiD case", "B", false},
+		{"invaliD case", "X", true},
 	}
 
 	for _, test := range tests {
@@ -112,7 +112,7 @@ func Test_GetSeat(t *testing.T) {
 
 }
 
-func Test_GetSeatId(t *testing.T) {
+func Test_GetSeatID(t *testing.T) {
 	tests := []struct {
 		boardingPass string
 		row          int
@@ -123,21 +123,21 @@ func Test_GetSeatId(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		t.Run("GetSeatId for boarding pass "+test.boardingPass+" should point to row "+fmt.Sprint(test.row), func(t *testing.T) {
+		t.Run("GetSeatID for boarding pass "+test.boardingPass+" should point to row "+fmt.Sprint(test.row), func(t *testing.T) {
 			input := test.boardingPass
 			want := test.row
-			got, err := GetSeatId(input)
+			got, err := GetSeatID(input)
 			if err != nil {
-				t.Errorf("GetSeatId() throwed an error: %v", err)
+				t.Errorf("GetSeatID() throwed an error: %v", err)
 			}
 			if got != want {
-				t.Errorf("GetSeatId() got %v but wanted %v", got, want)
+				t.Errorf("GetSeatID() got %v but wanted %v", got, want)
 			}
 		})
 	}
 }
 
-func Test_GetHighestSeatId(t *testing.T) {
+func Test_GetHighestSeatID(t *testing.T) {
 	tests := []struct {
 		boardingPasses []string
 		max            int
@@ -146,43 +146,43 @@ func Test_GetHighestSeatId(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		t.Run("GetHighestSeatId should return "+fmt.Sprint(test.max), func(t *testing.T) {
+		t.Run("GetHighestSeatID should return "+fmt.Sprint(test.max), func(t *testing.T) {
 			input := test.boardingPasses
 			want := test.max
-			got, err := GetHighestSeatId(input)
+			got, err := GetHighestSeatID(input)
 			if err != nil {
-				t.Errorf("GetHighestSeatId() throwed an error: %v", err)
+				t.Errorf("GetHighestSeatID() throwed an error: %v", err)
 			}
 			if got != want {
-				t.Errorf("GetHighestSeatId() got %v but wanted %v", got, want)
+				t.Errorf("GetHighestSeatID() got %v but wanted %v", got, want)
 			}
 		})
 	}
 }
 
-func Test_GetSortedSeatIds(t *testing.T) {
+func Test_GetSortedSeatIDs(t *testing.T) {
 	tests := []struct {
 		boardingPasses []string
-		sortedIds      []int
+		sortedIDs      []int
 	}{
 		{[]string{"BFFFBBFRRR", "FFFBBBFRRR", "BBFFBBFRLL"}, []int{119, 567, 820}},
 	}
 	for i, test := range tests {
-		t.Run("GetSortedSeatIds "+fmt.Sprint(i), func(t *testing.T) {
+		t.Run("GetSortedSeatIDs "+fmt.Sprint(i), func(t *testing.T) {
 			input := test.boardingPasses
-			want := test.sortedIds
-			got, err := GetSortedSeatIds(input)
+			want := test.sortedIDs
+			got, err := GetSortedSeatIDs(input)
 			if err != nil {
-				t.Errorf("GetSortedSeatIds() throwed an error: %v", err)
+				t.Errorf("GetSortedSeatIDs() throwed an error: %v", err)
 			}
 			if !reflect.DeepEqual(got, want) {
-				t.Errorf("GetSortedSeatIds() got %v but wanted %v", got, want)
+				t.Errorf("GetSortedSeatIDs() got %v but wanted %v", got, want)
 			}
 		})
 	}
 }
 
-func Test_GetMissingIds(t *testing.T) {
+func Test_GetMissingIDs(t *testing.T) {
 	tests := []struct {
 		input    []int
 		expected []int
@@ -192,15 +192,15 @@ func Test_GetMissingIds(t *testing.T) {
 	}
 
 	for i, test := range tests {
-		t.Run("GetMissingIds "+fmt.Sprint(i), func(t *testing.T) {
+		t.Run("GetMissingIDs "+fmt.Sprint(i), func(t *testing.T) {
 			input := test.input
 			want := test.expected
-			got, err := GetMissingIds(input)
+			got, err := GetMissingIDs(input)
 			if err != nil {
-				t.Errorf("GetMissingIds() throwed an error: %v", err)
+				t.Errorf("GetMissingIDs() throwed an error: %v", err)
 			}
 			if !reflect.DeepEqual(got, want) {
-				t.Errorf("GetMissingIds() got %v but wanted %v", got, want)
+				t.Errorf("GetMissingIDs() got %v but wanted %v", got, want)
 			}
 		})
 	}
