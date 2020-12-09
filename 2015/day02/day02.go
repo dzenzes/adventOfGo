@@ -2,13 +2,15 @@ package main
 
 import (
 	"fmt"
-	"github.com/dmies/adventOfGo/filehandler"
 	"log"
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/dmies/adventOfGo/filehandler"
 )
 
+// PackageDimensions defines the length, width and height of an package
 type PackageDimensions struct {
 	length int
 	width  int
@@ -37,6 +39,7 @@ func (p PackageDimensions) getBow() int {
 	return p.length * p.width * p.height
 }
 
+// Parse parses a String and returns the matching PackageDimensions
 func Parse(input string) (PackageDimensions, error) {
 	dimensions := strings.Split(input, "x")
 	length, err := strconv.Atoi(dimensions[0])
@@ -54,6 +57,7 @@ func Parse(input string) (PackageDimensions, error) {
 	return PackageDimensions{length, width, height}, nil
 }
 
+// GetTotalSquareFeetOfWrappingPaper parsses the input and returns the total square feet of wrapping paper for the packages
 func GetTotalSquareFeetOfWrappingPaper(input []string) (int, error) {
 	result := 0
 	for _, line := range input {
@@ -66,6 +70,7 @@ func GetTotalSquareFeetOfWrappingPaper(input []string) (int, error) {
 	return result, nil
 }
 
+// GetTotalFeetOfRibbon parsses the input and returns the total feet of ribbon for the packages
 func GetTotalFeetOfRibbon(input []string) (int, error) {
 	result := 0
 	for _, line := range input {
