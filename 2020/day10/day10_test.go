@@ -7,18 +7,21 @@ import (
 )
 
 func assertErrorIsNil(t *testing.T, err error) {
+	t.Helper()
 	if err != nil {
 		t.Errorf("got an error: %v", err)
 	}
 }
 
 func assertIntListIsEqual(t *testing.T, got, want []int) {
+	t.Helper()
 	if !reflect.DeepEqual(got, want) {
 		t.Errorf("got %v want %v", got, want)
 	}
 }
 
 func assertEqualInts(t *testing.T, got, want int) {
+	t.Helper()
 	if got != want {
 		t.Errorf("got %v want %v", got, want)
 	}
