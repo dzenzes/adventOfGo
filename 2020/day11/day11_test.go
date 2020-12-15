@@ -121,7 +121,7 @@ func Test_UpdateSeat(t *testing.T) {
 		want Seat
 	}{
 		{0, 0, createOccupiedSeat()},
-		{3, 1, createSeat()},
+		{3, 1, createOccupiedSeat()},
 	}
 
 	for _, test := range tests {
