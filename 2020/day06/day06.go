@@ -101,7 +101,7 @@ func GetSumOfCommonAnswers(input []string) int {
 }
 
 func main() {
-	votes, err := filehandler.ImportSringList("./input.txt")
+	votes, err := filehandler.ImportStringList("./input.txt")
 	if err != nil {
 		log.Fatal(err)
 	}

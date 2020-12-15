@@ -86,7 +86,7 @@ func GetNumberOfContainedBags(color string, rules map[string][]BagAndCount) int 
 }
 
 func main() {
-	ruleList, err := filehandler.ImportSringList("./input.txt")
+	ruleList, err := filehandler.ImportStringList("./input.txt")
 	if err != nil {
 		log.Fatal(err)
 	}

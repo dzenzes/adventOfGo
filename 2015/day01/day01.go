@@ -35,7 +35,7 @@ func FirstTimeInBasement(instruction string) int {
 }
 
 func main() {
-	instructions, err := filehandler.ImportSringList("./input.txt")
+	instructions, err := filehandler.ImportStringList("./input.txt")
 	if err != nil {
 		log.Fatal(err)
 	}

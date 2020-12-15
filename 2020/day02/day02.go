@@ -99,7 +99,7 @@ func Part2(passwordsWithPolicy []string) (int, error) {
 }
 
 func main() {
-	passwordsWithPolicy, err := filehandler.ImportSringList("./input.txt")
+	passwordsWithPolicy, err := filehandler.ImportStringList("./input.txt")
 	if err != nil {
 		log.Fatal(err)
 	}

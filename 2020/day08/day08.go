@@ -135,7 +135,7 @@ func FindCorrectInstructionsAndProcess(instructions []Instruction) (HandheldStat
 }
 
 func main() {
-	instructionList, err := filehandler.ImportSringList("./input.txt")
+	instructionList, err := filehandler.ImportStringList("./input.txt")
 	if err != nil {
 		log.Fatal(err)
 	}

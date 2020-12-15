@@ -49,7 +49,7 @@ func CountTreesOnMapForSlope(mapData []string, right int, down int) (int, error)
 }
 
 func main() {
-	mapData, err := filehandler.ImportSringList("./input.txt")
+	mapData, err := filehandler.ImportStringList("./input.txt")
 	if err != nil {
 		log.Fatal(err)
 	}

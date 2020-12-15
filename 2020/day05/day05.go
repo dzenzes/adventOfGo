@@ -118,7 +118,7 @@ func FindMySeat(boardingPasses []string) ([]int, error) {
 }
 
 func main() {
-	boardingPasses, err := filehandler.ImportSringList("./input.txt")
+	boardingPasses, err := filehandler.ImportStringList("./input.txt")
 	if err != nil {
 		log.Fatal(err)
 	}

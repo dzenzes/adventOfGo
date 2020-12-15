@@ -84,7 +84,7 @@ func GetTotalFeetOfRibbon(input []string) (int, error) {
 }
 
 func main() {
-	input, err := filehandler.ImportSringList("./input.txt")
+	input, err := filehandler.ImportStringList("./input.txt")
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -229,7 +229,7 @@ func Part2(passports []string) (int, error) {
 }
 
 func main() {
-	passports, err := filehandler.ImportSringList("./input.txt")
+	passports, err := filehandler.ImportStringList("./input.txt")
 	if err != nil {
 		log.Fatal(err)
 	}

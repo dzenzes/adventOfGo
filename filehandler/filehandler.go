@@ -63,8 +63,8 @@ func ToNumberPerLineList(handle io.Reader) ([]int, error) {
 	return program, nil
 }
 
-// ImportSringList opens the given file and parses its contents (one String per line) to an String array
-func ImportSringList(file string) ([]string, error) {
+// ImportStringList opens the given file and parses its contents (one String per line) to an String array
+func ImportStringList(file string) ([]string, error) {
 	handle, err := os.Open(file)
 
 	if err != nil {
