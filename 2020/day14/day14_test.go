@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func Test_ParseMask(t *testing.T) {
@@ -18,8 +19,8 @@ func Test_ParseMemory(t *testing.T) {
 	wantValue := 370803
 	gotAddress, gotValue, err := ParseMemory(input)
 	assert.Nil(t, err)
-	assert.Equal(t, gotAddress, wantAddress)
-	assert.Equal(t, gotValue, wantValue)
+	assert.Equal(t, wantAddress, gotAddress)
+	assert.Equal(t, wantValue, gotValue)
 }
 
 func Test_Parse(t *testing.T) {
@@ -42,7 +43,7 @@ func Test_Parse(t *testing.T) {
 
 	got, err := Parse(input)
 	assert.Nil(t, err)
-	assert.EqualValues(t, got, want)
+	assert.EqualValues(t, want, got)
 }
 
 func Test_AddBitmasks(t *testing.T) {
@@ -51,7 +52,7 @@ func Test_AddBitmasks(t *testing.T) {
 	want := "000000000000000000000000000000X1101X"
 
 	got := AddBitmasks(input, mask)
-	assert.Equal(t, got, want)
+	assert.Equal(t, want, got)
 }
 
 func Test_GetAddressesFromFloating(t *testing.T) {
@@ -63,7 +64,7 @@ func Test_GetAddressesFromFloating(t *testing.T) {
 		"000000000000000000000000000000111011",
 	}
 	got := GetAddressesFromFloating(input)
-	assert.EqualValues(t, got, want)
+	assert.EqualValues(t, want, got)
 }
 
 func Test_Program_calculate(t *testing.T) {
@@ -78,7 +79,7 @@ func Test_Program_calculate(t *testing.T) {
 	for _, test := range tests {
 		got, err := test.input.calculate()
 		assert.Nil(t, err)
-		assert.Equal(t, got, test.want)
+		assert.Equal(t, test.want, got)
 	}
 
 }
@@ -96,7 +97,7 @@ func Test_Program_calculateAddresses(t *testing.T) {
 		t.Run("calculateAddresses("+test.input.mask+")", func(t *testing.T) {
 			got, err := test.input.calculateAddresses()
 			assert.Nil(t, err)
-			assert.EqualValues(t, got, test.want)
+			assert.EqualValues(t, test.want, got)
 		})
 
 	}
@@ -114,7 +115,7 @@ func Test_GetSumOfAllPrograms(t *testing.T) {
 
 	got, err := GetSumOfAllPrograms(input)
 	assert.Nil(t, err)
-	assert.Equal(t, got, want)
+	assert.Equal(t, want, got)
 }
 
 func Test_GetSumOfAllProgramsV2(t *testing.T) {
@@ -128,5 +129,5 @@ func Test_GetSumOfAllProgramsV2(t *testing.T) {
 
 	got, err := GetSumOfAllProgramsV2(input)
 	assert.Nil(t, err)
-	assert.Equal(t, got, want)
+	assert.Equal(t, want, got)
 }
