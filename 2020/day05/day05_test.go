@@ -49,7 +49,7 @@ func Test_CalculateRange(t *testing.T) {
 		t.Run("CalculateRange() "+test.comment, func(t *testing.T) {
 			min, max, err := CalculateRange(test.letter, test.min, test.max)
 			if err != nil {
-				t.Errorf("CalculateRange() throwed an error: %v", err)
+				t.Errorf("CalculateRange() threw an error: %v", err)
 			}
 			if min != test.wantedMin {
 				t.Errorf("CalculateRange() got wrong min. Wanted %v got %v", test.wantedMin, min)
@@ -76,7 +76,7 @@ func Test_GetRow(t *testing.T) {
 			want := test.row
 			got, err := GetRow(input)
 			if err != nil {
-				t.Errorf("GetRow() throwed an error: %v", err)
+				t.Errorf("GetRow() threw an error: %v", err)
 			}
 			if got != want {
 				t.Errorf("GetRow() got %v but wanted %v", got, want)
@@ -102,7 +102,7 @@ func Test_GetSeat(t *testing.T) {
 			want := test.row
 			got, err := GetSeat(input)
 			if err != nil {
-				t.Errorf("GetSeat() throwed an error: %v", err)
+				t.Errorf("GetSeat() threw an error: %v", err)
 			}
 			if got != want {
 				t.Errorf("GetSeat() got %v but wanted %v", got, want)
@@ -128,7 +128,7 @@ func Test_GetSeatID(t *testing.T) {
 			want := test.row
 			got, err := GetSeatID(input)
 			if err != nil {
-				t.Errorf("GetSeatID() throwed an error: %v", err)
+				t.Errorf("GetSeatID() threw an error: %v", err)
 			}
 			if got != want {
 				t.Errorf("GetSeatID() got %v but wanted %v", got, want)
@@ -151,7 +151,7 @@ func Test_GetHighestSeatID(t *testing.T) {
 			want := test.max
 			got, err := GetHighestSeatID(input)
 			if err != nil {
-				t.Errorf("GetHighestSeatID() throwed an error: %v", err)
+				t.Errorf("GetHighestSeatID() threw an error: %v", err)
 			}
 			if got != want {
 				t.Errorf("GetHighestSeatID() got %v but wanted %v", got, want)
@@ -173,7 +173,7 @@ func Test_GetSortedSeatIDs(t *testing.T) {
 			want := test.sortedIDs
 			got, err := GetSortedSeatIDs(input)
 			if err != nil {
-				t.Errorf("GetSortedSeatIDs() throwed an error: %v", err)
+				t.Errorf("GetSortedSeatIDs() threw an error: %v", err)
 			}
 			if !reflect.DeepEqual(got, want) {
 				t.Errorf("GetSortedSeatIDs() got %v but wanted %v", got, want)
@@ -197,7 +197,7 @@ func Test_GetMissingIDs(t *testing.T) {
 			want := test.expected
 			got, err := GetMissingIDs(input)
 			if err != nil {
-				t.Errorf("GetMissingIDs() throwed an error: %v", err)
+				t.Errorf("GetMissingIDs() threw an error: %v", err)
 			}
 			if !reflect.DeepEqual(got, want) {
 				t.Errorf("GetMissingIDs() got %v but wanted %v", got, want)
