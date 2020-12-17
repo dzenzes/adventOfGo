@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/dmies/adventOfGo/testhelper"
+	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
@@ -9,7 +9,7 @@ func Test_ParseMask(t *testing.T) {
 	input := "mask = 10X0110X01100X00111XX00001X011101001"
 	want := "10X0110X01100X00111XX00001X011101001"
 	got := ParseMask(input)
-	testhelper.AssertEquals(got, want, t)
+	assert.Equal(t, got, want)
 }
 
 func Test_ParseMemory(t *testing.T) {
@@ -17,9 +17,9 @@ func Test_ParseMemory(t *testing.T) {
 	wantAddress := 45673
 	wantValue := 370803
 	gotAddress, gotValue, err := ParseMemory(input)
-	testhelper.AssertNoError(err, t)
-	testhelper.AssertEquals(gotAddress, wantAddress, t)
-	testhelper.AssertEquals(wantValue, gotValue, t)
+	assert.Nil(t, err)
+	assert.Equal(t, gotAddress, wantAddress)
+	assert.Equal(t, gotValue, wantValue)
 }
 
 func Test_Parse(t *testing.T) {
@@ -41,8 +41,8 @@ func Test_Parse(t *testing.T) {
 	}
 
 	got, err := Parse(input)
-	testhelper.AssertNoError(err, t)
-	testhelper.AssertDeepEquals(got, want, t)
+	assert.Nil(t, err)
+	assert.EqualValues(t, got, want)
 }
 
 func Test_AddBitmasks(t *testing.T) {
@@ -51,7 +51,7 @@ func Test_AddBitmasks(t *testing.T) {
 	want := "000000000000000000000000000000X1101X"
 
 	got := AddBitmasks(input, mask)
-	testhelper.AssertEquals(got, want, t)
+	assert.Equal(t, got, want)
 }
 
 func Test_GetAddressesFromFloating(t *testing.T) {
@@ -63,7 +63,7 @@ func Test_GetAddressesFromFloating(t *testing.T) {
 		"000000000000000000000000000000111011",
 	}
 	got := GetAddressesFromFloating(input)
-	testhelper.AssertDeepEquals(got, want, t)
+	assert.EqualValues(t, got, want)
 }
 
 func Test_Program_calculate(t *testing.T) {
@@ -77,8 +77,8 @@ func Test_Program_calculate(t *testing.T) {
 
 	for _, test := range tests {
 		got, err := test.input.calculate()
-		testhelper.AssertNoError(err, t)
-		testhelper.AssertEquals(got, test.want, t)
+		assert.Nil(t, err)
+		assert.Equal(t, got, test.want)
 	}
 
 }
@@ -95,8 +95,8 @@ func Test_Program_calculateAddresses(t *testing.T) {
 	for _, test := range tests {
 		t.Run("calculateAddresses("+test.input.mask+")", func(t *testing.T) {
 			got, err := test.input.calculateAddresses()
-			testhelper.AssertNoError(err, t)
-			testhelper.AssertDeepEquals(got, test.want, t)
+			assert.Nil(t, err)
+			assert.EqualValues(t, got, test.want)
 		})
 
 	}
@@ -113,8 +113,8 @@ func Test_GetSumOfAllPrograms(t *testing.T) {
 	want := 165
 
 	got, err := GetSumOfAllPrograms(input)
-	testhelper.AssertNoError(err, t)
-	testhelper.AssertEquals(got, want, t)
+	assert.Nil(t, err)
+	assert.Equal(t, got, want)
 }
 
 func Test_GetSumOfAllProgramsV2(t *testing.T) {
@@ -127,6 +127,6 @@ func Test_GetSumOfAllProgramsV2(t *testing.T) {
 	want := 208
 
 	got, err := GetSumOfAllProgramsV2(input)
-	testhelper.AssertNoError(err, t)
-	testhelper.AssertEquals(got, want, t)
+	assert.Nil(t, err)
+	assert.Equal(t, got, want)
 }
