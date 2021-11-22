@@ -36,7 +36,7 @@ func ToNumberList(handle io.Reader) ([]int, error) {
 	return program, nil
 }
 
-// ImportNumberPerLineList opens the given file and parses its contents (one number per line) to an int array
+// ImportNumberPerLineList opens the given file and parses its contents (one number per line) to an []int 
 func ImportNumberPerLineList(file string) ([]int, error) {
 	handle, err := os.Open(file)
 
